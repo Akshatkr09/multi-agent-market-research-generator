@@ -2,7 +2,7 @@
 
 Python project using CrewAI, Gemini, Tavily, Pandas, and ReportLab.
 
-**M2 adds a Tavily-powered web research and extraction tool.** Specialist agents, hierarchical orchestration, financial parsing, PDF generation, and benchmarking are planned for later milestones.
+**M3 adds the Pandas financial CSV parser.** M2 provides Tavily-powered web research and extraction. Specialist agents, hierarchical orchestration, PDF generation, and benchmarking are planned for later milestones.
 
 ## Requirements
 - Python 3.11 (64-bit recommended)
@@ -38,6 +38,16 @@ Manual live test (uses Tavily API quota):
 python -c "from tools.web_scraper import web_research_tool; print(web_research_tool.run('Tech Sector Q3 Analysis'))"
 ```
 
+
+## M3: Financial CSV parser
+`tools/financial_parser.py` provides a CrewAI `@tool` named `Financial Data Parser`. It:
+- Loads a CSV file with Pandas and selects numeric metric columns.
+- Calculates count, mean, sample standard deviation, minimum, quartiles, and maximum.
+- Returns the statistics as a Markdown table.
+- Reports clear messages for missing, empty, malformed, or non-numeric input files.
+
+The reusable functions `load_financial_data`, `calculate_summary`, `format_summary_markdown`, and `analyse_financial_csv` are also tested independently. Unit tests use temporary mock CSV files and do not require API keys or network access.
+
 ## Tests
 ```powershell
 pytest -v
@@ -47,7 +57,7 @@ M2 tests mock Tavily responses; they do not make network requests or consume API
 ## Milestone status
 - [x] M1 — Project scaffold and configuration
 - [x] M2 — Tavily web research and extraction tool
-- [ ] M3 — Financial CSV parser and statistical summaries
+- [x] M3 — Financial CSV parser and statistical summaries
 - [ ] M4 — Three specialist agents and task definitions
 - [ ] M5 — Hierarchical CrewAI orchestration and CLI execution
 - [ ] M6 — A4 PDF report generation
