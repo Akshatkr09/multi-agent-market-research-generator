@@ -1,1 +1,1 @@
-"""Project utility package."""
+"""Project utility modules."""
