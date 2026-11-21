@@ -25,9 +25,8 @@ python main.py --query "Tech Sector Q3 Analysis"
 Default CSV: `data/sample_financial_metrics.csv`; default PDF: `output/market_report.pdf`.
 Use `--csv`, `--output`, and `--benchmarks` to override paths.
 
-## Benchmarking (M7)
-Each run appends a record to `benchmarks.json`, including query, timestamps, status, total workflow duration, task completion intervals, assigned agent names, and chronological task-completion routing history. Task callbacks occur at completion, so the per-task field is explicitly an observed completion interval (from kickoff or the previous callback), not a separately instrumented model-only duration.
-
+## Benchmarking
+Each run appends a record to `benchmarks.json`, including query, timestamps, status, total workflow duration, task completion intervals, assigned agent names, and chronological task-completion routing history. CrewAI's task callback fires at completion, so the per-task field is an observed completion interval (from kickoff or the previous callback), not a separately instrumented model-only duration.
 The benchmark file is generated locally and is intentionally gitignored.
 
 ## Tests
@@ -35,6 +34,15 @@ The benchmark file is generated locally and is intentionally gitignored.
 pytest -v
 ```
 The test suite mocks external workflow calls and does not consume API credits.
+
+## Architecture
+See `docs/ARCHITECTURE.md` for agent responsibilities, data flow, evidence rules, and benchmark semantics.
+
+## Sample outputs
+Illustrative Markdown and PDF examples are in `sample_outputs/`. They use synthetic sample financial data and are not live market research. Refresh them from a real API-backed run before presenting them as actual research.
+
+## GitHub Actions
+The workflow in `.github/workflows/tests.yml` runs pytest on pushes and pull requests to `main`.
 
 ## Milestones
 - [x] M1 — Project scaffold and configuration
@@ -44,4 +52,4 @@ The test suite mocks external workflow calls and does not consume API credits.
 - [x] M5 — Hierarchical CrewAI architecture
 - [x] M6 — End-to-end CLI execution
 - [x] M7 — Benchmarking and execution tracking
-- [ ] M8 — Final integration, documentation, sample outputs, and validation
+- [x] M8 — Final documentation, sample outputs, and CI workflow
