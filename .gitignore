@@ -1,0 +1,33 @@
+# Secrets
+.env
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test/cache/coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated outputs and logs (keep directory placeholders)
+output/*
+!output/.gitkeep
+logs/*
+!logs/.gitkeep
+
+# Local data files (keep directory placeholder; review before committing real datasets)
+data/*
+!data/.gitkeep

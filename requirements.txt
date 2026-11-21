@@ -1,0 +1,18 @@
+# Core orchestration and native Gemini integration
+crewai[tools,google-genai]==1.15.44
+
+# Research/search integration
+tavily-python
+
+# Data processing and Markdown tables
+pandas
+tabulate
+
+# PDF generation
+reportlab
+
+# Configuration
+python-dotenv
+
+# Automated tests
+pytest
