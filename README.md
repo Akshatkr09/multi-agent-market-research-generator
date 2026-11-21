@@ -48,6 +48,25 @@ python -c "from tools.web_scraper import web_research_tool; print(web_research_t
 
 The reusable functions `load_financial_data`, `calculate_summary`, `format_summary_markdown`, and `analyse_financial_csv` are also tested independently. Unit tests use temporary mock CSV files and do not require API keys or network access.
 
+
+## M4: A4 PDF report compiler
+`report/pdf_generator.py` uses ReportLab to compile a polished A4 PDF from report copy and an optional Markdown metrics table. It includes a dark header banner, document metadata, styled headings and body text, formatted tables, footer notes, and automatic `Page X of Y` numbering.
+
+Example:
+```python
+from report.pdf_generator import compile_market_report
+
+compile_market_report(
+    title="Technology Sector Q3 Analysis",
+    query="Tech Sector Q3 Analysis",
+    report_text="# Executive Summary\\nYour report copy...",
+    metrics_markdown="| Metric | Value |\\n|---|---:|\\n| Revenue mean | 120.5 |",
+    output_path="output/market_report.pdf",
+)
+```
+
+Run the PDF tests with `pytest -v tests/test_pdf_generator.py`. These tests create temporary PDFs and do not require API keys or network access.
+
 ## Tests
 ```powershell
 pytest -v
