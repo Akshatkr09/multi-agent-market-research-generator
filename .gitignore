@@ -1,25 +1,9 @@
-# Secrets
 .env
-
-# Virtual environments
 .venv/
 venv/
-env/
-
-# Python
 __pycache__/
 *.py[cod]
 .pytest_cache/
-.coverage
-htmlcov/
-
-# IDE and OS
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-
-# Generated outputs and logs
 output/*
 !output/.gitkeep
 logs/*
