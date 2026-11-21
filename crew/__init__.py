@@ -1,1 +1,1 @@
-"""CrewAI agent and orchestration package."""
+"""CrewAI agents, tasks, and orchestration package."""
