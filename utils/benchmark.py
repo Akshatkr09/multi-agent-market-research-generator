@@ -1,1 +1,1 @@
-"""Execution timing and routing-history logging will be added in M7."""
+"""Benchmarking utilities will be added in a later milestone."""

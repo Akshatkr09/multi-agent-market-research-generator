@@ -1,1 +1,1 @@
-"""Research data persistence helpers will be added in later milestones."""
+"""Data management utilities will be added in a later milestone."""

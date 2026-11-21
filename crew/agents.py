@@ -1,1 +1,1 @@
-"""Specialist CrewAI agent definitions will be added in M4."""
+"""Agent definitions will be added in a later milestone."""

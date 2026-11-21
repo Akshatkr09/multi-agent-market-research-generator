@@ -9,9 +9,6 @@ env/
 # Python
 __pycache__/
 *.py[cod]
-*$py.class
-
-# Test/cache/coverage
 .pytest_cache/
 .coverage
 htmlcov/
@@ -22,12 +19,10 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
-# Generated outputs and logs (keep directory placeholders)
+# Generated outputs and logs
 output/*
 !output/.gitkeep
 logs/*
 !logs/.gitkeep
-
-# Local data files (keep directory placeholder; review before committing real datasets)
 data/*
 !data/.gitkeep

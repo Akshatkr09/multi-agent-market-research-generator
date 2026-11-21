@@ -1,1 +1,1 @@
-"""ReportLab PDF compilation will be added in M6."""
+"""PDF generation will be added in a later milestone."""

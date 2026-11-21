@@ -1,90 +1,57 @@
 # Multi-Agent Market Research & Report Generator
 
-A Python application built with CrewAI, Gemini, Tavily, Pandas, and ReportLab.
+Python project using CrewAI, Gemini, Tavily, Pandas, and ReportLab.
 
-This repository is being developed in milestones. **M1 establishes the project scaffold and configuration only**; research tools, agents, orchestration, PDF generation, and full tests will be added in later milestones.
+**M2 adds a Tavily-powered web research and extraction tool.** Specialist agents, hierarchical orchestration, financial parsing, PDF generation, and benchmarking are planned for later milestones.
 
 ## Requirements
-
 - Python 3.11 (64-bit recommended)
 - Git
-- Google Gemini API key
-- Tavily API key
+- Tavily API key for live research
+- Gemini API key for later agent milestones
 
-## Setup (Windows PowerShell)
-
-1. Extract this ZIP into your project location.
-2. Open the extracted folder in VS Code.
-3. Create and activate a virtual environment:
-
-   ```powershell
-   py -3.11 -m venv .venv
-   .venv\Scripts\Activate.ps1
-   ```
-
-4. Install dependencies:
-
-   ```powershell
-   python -m pip install --upgrade pip
-   pip install -r requirements.txt
-   ```
-
-5. Copy `.env.example` to `.env` and add your API keys:
-
-   ```powershell
-   Copy-Item .env.example .env
-   ```
-
-   Edit `.env` locally. Never commit it or share its contents.
-
-## Configuration
-
-`.env`:
-
-```env
-GOOGLE_API_KEY=your_gemini_api_key
-TAVILY_API_KEY=your_tavily_api_key
-```
-
-The project will use Gemini through CrewAI's Google GenAI integration. API free-tier availability and limits are controlled by the providers and may change.
-
-## Current milestone
-
-**M1 — Project scaffold**
-
-- Standard package layout
-- Environment-variable template
-- Dependency manifest
-- CLI entry-point placeholder
-- Initial test scaffold
-- Git ignore rules
-
-The application intentionally reports that the full workflow is not implemented yet. Do not treat M1 as the completed assignment.
-
-## Planned execution command
-
-The final project will support:
-
+## Windows setup
 ```powershell
-python main.py --query "Tech Sector Q3 Analysis"
+py -3.11 -m venv .venv
+.venv\\Scripts\\Activate.ps1
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+Copy-Item .env.example .env
+```
+Add keys to `.env`:
+```env
+TAVILY_API_KEY=your_tavily_api_key
+GOOGLE_API_KEY=your_gemini_api_key
+```
+Never commit `.env` or share its contents.
+
+## M2: Web research tool
+`tools/web_scraper.py` defines a CrewAI `@tool` that:
+- Searches with Tavily using basic search depth.
+- Requests raw page content using `include_raw_content=True`.
+- Returns titles, source URLs, summaries, and extracted text.
+- Limits extracted text to 10,000 characters per source.
+- Handles missing API configuration and provider errors clearly.
+
+Manual live test (uses Tavily API quota):
+```powershell
+python -c "from tools.web_scraper import web_research_tool; print(web_research_tool.run('Tech Sector Q3 Analysis'))"
 ```
 
 ## Tests
-
 ```powershell
-pytest
+pytest -v
 ```
+M2 tests mock Tavily responses; they do not make network requests or consume API credits.
 
-M1 includes only scaffold/configuration tests. The assignment's required Pandas and PDF tests will be added in their respective milestones.
+## Milestone status
+- [x] M1 — Project scaffold and configuration
+- [x] M2 — Tavily web research and extraction tool
+- [ ] M3 — Financial CSV parser and statistical summaries
+- [ ] M4 — Three specialist agents and task definitions
+- [ ] M5 — Hierarchical CrewAI orchestration and CLI execution
+- [ ] M6 — A4 PDF report generation
+- [ ] M7 — Benchmarks, routing history, and expanded tests
+- [ ] M8 — Integration, documentation, sample outputs, and final validation
 
-## Evaluation requirements tracked
-
-The original project brief requires:
-
-1. Three specialist agents under CrewAI hierarchical orchestration with a manager LLM.
-2. Custom web research/scraping and Pandas financial-statistics tools.
-3. A formatted A4 PDF with header, tables, footer, and page numbering.
-4. `benchmarks.json` with task durations and routing history, plus pytest tests.
-5. Clean project structure, `.env.example`, at least eight meaningful Git commits, and README instructions.
-
-See the original project brief for the authoritative acceptance criteria.
+The original project brief remains the authoritative source for final acceptance criteria.

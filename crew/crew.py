@@ -1,1 +1,1 @@
-"""Hierarchical CrewAI orchestration will be added in M5."""
+"""Crew orchestration will be added in a later milestone."""
